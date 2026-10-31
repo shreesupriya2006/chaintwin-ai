@@ -1,0 +1,17 @@
+key,value,description,data_status
+as_of_date,2026-10-31,Date this data was taken,Known
+currency,INR,Currency for all money values,Known
+road_cost_per_tonne_km,3.5,Road freight cost used for supplier deliveries,Assumption
+rail_cost_per_tonne_km,1.6,Rail freight cost,Assumption
+road_co2_kg_per_tonne_km,0.075,Road CO2 per tonne-km,Assumption
+rail_co2_kg_per_tonne_km,0.022,Rail CO2 per tonne-km,Assumption
+loss_limit_money_inr,500000,Plans above this loss trigger backup suppliers,Known
+loss_limit_late_orders,2,Plans with more late orders trigger backup suppliers,Known
+loss_limit_no_high_priority_late,TRUE,Any late high-priority order triggers backup suppliers,Known
+stock_cover_warning_days,3,Warn when stock cover falls below this many days,Known
+weight_cost,0.25,Score weight,Known
+weight_sla,0.25,Score weight,Known
+weight_recovery_time,0.15,Score weight,Known
+weight_customer_impact,0.15,Score weight,Known
+weight_risk,0.1,Score weight,Known
+weight_sustainability,0.1,Score weight,Known

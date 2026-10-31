@@ -1,0 +1,13 @@
+supplier_id,material_id,role,unit_price,price_unit,lead_time_days,weekly_capacity,capacity_unit,quote_status,quote_date,data_status
+SUP-01,MAT-01,Primary,265,INR per kg,3,18000,kg per week,Contract,,Known
+SUP-02,MAT-02,Primary,340,INR per kg,2,1000,kg per week,Contract,,Known
+SUP-03,MAT-03,Primary,95,INR per cone,4,900,cones per week,Contract,,Known
+SUP-04,MAT-04,Primary,0.8,INR per pc,2,80000,pcs per week,Contract,,Known
+SUP-05,MAT-05,Primary,1.2,INR per pc,2,80000,pcs per week,Contract,,Known
+SUP-06,MAT-01,Backup,278,INR per kg,4,8000,kg per week,Confirmed quote,2026-10-20,Known
+SUP-07,MAT-01,Backup,272,INR per kg,5,6000,kg per week,Unconfirmed estimate,,Assumption
+SUP-08,MAT-06,Backup,215,INR per kg,6,10000,kg per week,Unconfirmed estimate,,Assumption
+SUP-09,MAT-02,Backup,355,INR per kg,7,600,kg per week,Unconfirmed estimate,,Assumption
+SUP-10,MAT-03,Backup,99,INR per cone,4,400,cones per week,Confirmed quote,2026-10-18,Known
+SUP-11,MAT-04,Backup,0.9,INR per pc,3,40000,pcs per week,Confirmed quote,2026-10-22,Known
+SUP-12,MAT-05,Backup,1.3,INR per pc,3,40000,pcs per week,Confirmed quote,2026-10-22,Known

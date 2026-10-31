@@ -1,0 +1,12 @@
+location_id,name,type,city,state,normal_capacity_pcs_per_day,max_capacity_pcs_per_day,customer_id
+FAC-1,Tiruppur Unit 1 (Veerapandi),Factory,Tiruppur,Tamil Nadu,6000,7500,
+FAC-2,Tiruppur Unit 2 (Palladam),Factory,Palladam,Tamil Nadu,4500,5500,
+DC-CHN,Chennai DC (Ambattur),Distribution Centre,Chennai,Tamil Nadu,,,
+DC-BLR,Bengaluru DC (Peenya),Distribution Centre,Bengaluru,Karnataka,,,
+DC-CBE,Coimbatore DC (Kurichi),Distribution Centre,Coimbatore,Tamil Nadu,,,
+ST-01,Madras Mart - Anna Nagar,Store,Chennai,Tamil Nadu,,,CUS-01
+ST-02,Madras Mart - Velachery,Store,Chennai,Tamil Nadu,,,CUS-01
+ST-03,Southern Style - Indiranagar,Store,Bengaluru,Karnataka,,,CUS-02
+ST-04,Kerala Kids Corner - Edappally,Store,Kochi,Kerala,,,CUS-03
+ST-05,Hyderabad Hues - Banjara Hills,Store,Hyderabad,Telangana,,,CUS-04
+ST-06,Coimbatore Cotton Club - RS Puram,Store,Coimbatore,Tamil Nadu,,,CUS-05

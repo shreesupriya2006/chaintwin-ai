@@ -1,0 +1,29 @@
+po_id,supplier_id,material_id,quantity,unit,to_factory,po_date,expected_arrival,status,linked_order,data_status
+PO-Y-1001,SUP-01,MAT-01,2880,kg,FAC-1,2026-10-06,2026-10-10,Received,ORD-1001,Known
+PO-Y-1002,SUP-01,MAT-01,1980,kg,FAC-2,2026-10-20,2026-10-26,Received,ORD-1002,Known
+PO-Y-1003,SUP-01,MAT-01,3600,kg,FAC-1,2026-10-26,2026-11-03,In transit,ORD-1003,Known
+PO-Y-1004,SUP-01,MAT-01,1200,kg,FAC-1,2026-10-03,2026-10-06,Received,ORD-1004,Known
+PO-Y-1005,SUP-01,MAT-01,2200,kg,FAC-2,2026-10-27,2026-11-04,In transit,ORD-1005,Known
+PO-Y-1006,SUP-01,MAT-01,1200,kg,FAC-2,2026-09-29,2026-10-03,Received,ORD-1006,Known
+PO-Y-1007,SUP-01,MAT-01,900,kg,FAC-1,2026-10-28,2026-11-05,Ordered,ORD-1007,Known
+PO-Y-1008,SUP-01,MAT-01,1650,kg,FAC-2,2026-10-31,2026-11-08,Ordered,ORD-1008,Known
+PO-Y-1009,SUP-01,MAT-01,3360,kg,FAC-1,2026-11-02,2026-11-10,Planned,ORD-1009,Assumption
+PO-Y-1010,SUP-01,MAT-01,1430,kg,FAC-2,2026-10-29,2026-11-06,Ordered,ORD-1010,Known
+PO-Y-1011,SUP-01,MAT-01,600,kg,FAC-1,2026-10-20,2026-10-26,Received,ORD-1011,Known
+PO-Y-1012,SUP-01,MAT-01,2640,kg,FAC-2,2026-11-06,2026-11-14,Planned,ORD-1012,Assumption
+PO-W-01,SUP-02,MAT-02,504,kg,FAC-1,2026-10-28,2026-11-02,Ordered,Weekly stock,Known
+PO-W-02,SUP-02,MAT-02,378,kg,FAC-2,2026-10-28,2026-11-02,Ordered,Weekly stock,Known
+PO-W-03,SUP-03,MAT-03,420,cones,FAC-1,2026-10-28,2026-11-02,Ordered,Weekly stock,Known
+PO-W-04,SUP-03,MAT-03,315,cones,FAC-2,2026-10-28,2026-11-02,Ordered,Weekly stock,Known
+PO-W-05,SUP-04,MAT-04,42000,pcs,FAC-1,2026-10-28,2026-11-02,Ordered,Weekly stock,Known
+PO-W-06,SUP-04,MAT-04,31500,pcs,FAC-2,2026-10-28,2026-11-02,Ordered,Weekly stock,Known
+PO-W-07,SUP-05,MAT-05,42000,pcs,FAC-1,2026-10-28,2026-11-02,Ordered,Weekly stock,Known
+PO-W-08,SUP-05,MAT-05,31500,pcs,FAC-2,2026-10-28,2026-11-02,Ordered,Weekly stock,Known
+PO-W-09,SUP-02,MAT-02,504,kg,FAC-1,2026-11-04,2026-11-09,Planned,Weekly stock,Assumption
+PO-W-10,SUP-02,MAT-02,378,kg,FAC-2,2026-11-04,2026-11-09,Planned,Weekly stock,Assumption
+PO-W-11,SUP-03,MAT-03,420,cones,FAC-1,2026-11-04,2026-11-09,Planned,Weekly stock,Assumption
+PO-W-12,SUP-03,MAT-03,315,cones,FAC-2,2026-11-04,2026-11-09,Planned,Weekly stock,Assumption
+PO-W-13,SUP-04,MAT-04,42000,pcs,FAC-1,2026-11-04,2026-11-09,Planned,Weekly stock,Assumption
+PO-W-14,SUP-04,MAT-04,31500,pcs,FAC-2,2026-11-04,2026-11-09,Planned,Weekly stock,Assumption
+PO-W-15,SUP-05,MAT-05,42000,pcs,FAC-1,2026-11-04,2026-11-09,Planned,Weekly stock,Assumption
+PO-W-16,SUP-05,MAT-05,31500,pcs,FAC-2,2026-11-04,2026-11-09,Planned,Weekly stock,Assumption

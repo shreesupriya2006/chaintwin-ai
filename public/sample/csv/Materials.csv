@@ -1,0 +1,7 @@
+material_id,name,unit,category,note
+MAT-01,Cotton Yarn 30s Combed,kg,Raw material,Main yarn for all T-shirts
+MAT-02,Reactive Dyes & Chemicals,kg,Raw material,Used in dyeing
+MAT-03,Sewing Thread,cones,Raw material,Stitching
+MAT-04,Printed Neck Labels,pcs,Raw material,One per T-shirt
+MAT-05,Poly Bags,pcs,Raw material,One per T-shirt
+MAT-06,Cotton-Poly Blend Yarn 30s (65/35),kg,Substitute,"Can replace cotton yarn for some products, with buyer approval"

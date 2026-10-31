@@ -1,0 +1,6 @@
+customer_id,name,city,priority,late_penalty_pct_per_day,note
+CUS-01,Madras Mart Retail,Chennai,High,2,Festive season delivery commitment
+CUS-02,Southern Style Stores,Bengaluru,Medium,1.5,Standard retail contract
+CUS-03,Kerala Kids Corner,Kochi,Medium,1,Standard retail contract
+CUS-04,Hyderabad Hues Fashion,Hyderabad,High,2,Festive season delivery commitment
+CUS-05,Coimbatore Cotton Club,Coimbatore,Low,0.5,Flexible delivery window

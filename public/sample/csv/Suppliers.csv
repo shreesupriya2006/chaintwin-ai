@@ -1,0 +1,13 @@
+supplier_id,name,city,state,type,contact_person,contact_email,reliability_pct,reliability_basis,distance_to_tiruppur_km
+SUP-01,Sri Kumaran Spinning Mills,Coimbatore,Tamil Nadu,Primary,Ravi Shankar,sales@srikumaran-mills.example,94,Delivery history,50
+SUP-02,Vasanth Dyes & Chemicals,Tiruppur,Tamil Nadu,Primary,Meena Iyer,orders@vasanth-dyes.example,92,Delivery history,5
+SUP-03,Madurai Thread Industries,Madurai,Tamil Nadu,Primary,K. Selvam,sales@madurai-thread.example,90,Delivery history,210
+SUP-04,Arul Labels & Trims,Tiruppur,Tamil Nadu,Primary,Arul Kumar,info@arul-labels.example,96,Delivery history,8
+SUP-05,Sakthi Packaging,Tiruppur,Tamil Nadu,Primary,Lakshmi Devi,orders@sakthi-pack.example,95,Delivery history,10
+SUP-06,Erode Cotton Yarns Pvt Ltd,Erode,Tamil Nadu,Backup,S. Murugan,sales@erode-yarns.example,91,Assumption,55
+SUP-07,Salem Fine Spinners,Salem,Tamil Nadu,Backup,R. Anand,enquiry@salem-spinners.example,85,Assumption,135
+SUP-08,Gujarat Polyfibre Yarns,Surat,Gujarat,Backup,Hardik Patel,sales@gujarat-polyfibre.example,80,Assumption,1450
+SUP-09,Ahmedabad Dyechem,Ahmedabad,Gujarat,Backup,Nirav Shah,info@ahmedabad-dyechem.example,82,Assumption,1750
+SUP-10,Bengaluru Threadworks,Bengaluru,Karnataka,Backup,Deepa Rao,sales@blr-threadworks.example,93,Assumption,350
+SUP-11,Coimbatore Label House,Coimbatore,Tamil Nadu,Backup,P. Karthik,orders@cbe-labels.example,94,Assumption,50
+SUP-12,Palladam Pack Solutions,Palladam,Tamil Nadu,Backup,V. Suresh,sales@palladam-pack.example,92,Assumption,20

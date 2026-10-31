@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#14b8a6" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <!-- Outer glowing rings -->
+  <circle cx="50" cy="50" r="42" stroke="url(#grad1)" stroke-width="3" stroke-dasharray="6 4" opacity="0.6"/>
+  <!-- Digital Twin Nodes -->
+  <circle cx="25" cy="50" r="9" fill="#3b82f6" filter="url(#glow)"/>
+  <circle cx="50" cy="25" r="9" fill="#6366f1" filter="url(#glow)"/>
+  <circle cx="50" cy="75" r="9" fill="#14b8a6" filter="url(#glow)"/>
+  <circle cx="75" cy="50" r="9" fill="#8b5cf6" filter="url(#glow)"/>
+  <!-- Connecting links -->
+  <path d="M25 50 Q50 30 75 50" stroke="#60a5fa" stroke-width="2.5" fill="none"/>
+  <path d="M25 50 Q50 70 75 50" stroke="#2dd4bf" stroke-width="2.5" fill="none" stroke-dasharray="4 3"/>
+  <path d="M50 25 L50 75" stroke="#a78bfa" stroke-width="2" fill="none"/>
+  <!-- Center Core -->
+  <circle cx="50" cy="50" r="6" fill="#ffffff" />
+  <circle cx="50" cy="50" r="3" fill="#6366f1" />
+</svg>
