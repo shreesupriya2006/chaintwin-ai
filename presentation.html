@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ChainTwin AI – Supply Chain Digital Twin Recovery Agent</title>
+<style>
+:root{--bg:#070d1f;--bg2:#101a3a;--card:rgba(255,255,255,.07);--line:rgba(255,255,255,.14);--ink:#f1f5f9;--mut:#a5b4cf;--ind:#818cf8;--teal:#2dd4bf;--amb:#fbbf24;--red:#f87171;--grn:#4ade80;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f4f6ff;--bg2:#e3e8ff;--card:rgba(255,255,255,.85);--line:rgba(30,40,90,.15);--ink:#111a3a;--mut:#4b5878;--ind:#4f46e5;--teal:#0d9488;--amb:#b45309;--red:#dc2626;--grn:#16a34a}}
+:root[data-theme="light"]{--bg:#f4f6ff;--bg2:#e3e8ff;--card:rgba(255,255,255,.85);--line:rgba(30,40,90,.15);--ink:#111a3a;--mut:#4b5878;--ind:#4f46e5;--teal:#0d9488;--amb:#b45309;--red:#dc2626;--grn:#16a34a}
+:root[data-theme="dark"]{--bg:#070d1f;--bg2:#101a3a;--card:rgba(255,255,255,.07);--line:rgba(255,255,255,.14);--ink:#f1f5f9;--mut:#a5b4cf;--ind:#818cf8;--teal:#2dd4bf;--amb:#fbbf24;--red:#f87171;--grn:#4ade80}
+*{box-sizing:border-box;margin:0}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font-family:Inter,"Segoe UI",system-ui,-apple-system,Arial,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+.bg{position:fixed;inset:0;background:radial-gradient(900px 500px at 85% -10%,color-mix(in srgb,var(--ind) 35%,transparent),transparent),radial-gradient(700px 500px at -5% 105%,color-mix(in srgb,var(--teal) 25%,transparent),transparent),linear-gradient(160deg,var(--bg),var(--bg2));z-index:0}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:8vh 7vw 9vh;opacity:0;transform:translateX(40px) scale(.98);pointer-events:none;transition:opacity .5s,transform .5s;z-index:1;overflow-y:auto}
+.slide.on{opacity:1;transform:none;pointer-events:auto}
+.slide.past{transform:translateX(-40px) scale(.98)}
+.r{opacity:0;transform:translateY(18px)}
+.on .r{animation:up .6s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i,0)*.1s + .15s)}
+@keyframes up{to{opacity:1;transform:none}}
+.eyebrow{font-size:clamp(11px,1.3vw,14px);letter-spacing:.18em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:1.2vh}
+h1{font-size:clamp(40px,7.5vw,88px);line-height:1;font-weight:800;letter-spacing:-.02em;color:var(--ink);padding-bottom:1.4vh;border-bottom:4px solid var(--teal);display:inline-block}
+@keyframes shine{to{background-position:200% 0}}
+h2{font-size:clamp(26px,4.2vw,50px);line-height:1.1;font-weight:800;margin-bottom:1vh}
+.sub{font-size:clamp(14px,1.9vw,22px);color:var(--mut);max-width:760px;line-height:1.45}
+.grid{display:grid;gap:clamp(10px,1.6vw,20px);margin-top:3vh}
+.g2{grid-template-columns:repeat(2,1fr)}.g4{grid-template-columns:repeat(4,1fr)}.g5{grid-template-columns:repeat(5,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:clamp(12px,1.8vw,22px);backdrop-filter:blur(10px);transition:transform .25s,border-color .25s}
+.card:hover{border-color:var(--teal)}
+.card h3{font-size:clamp(15px,1.8vw,21px);margin-bottom:.6vh}
+.card p{font-size:clamp(12px,1.3vw,16px);color:var(--mut);line-height:1.45}
+.ico{font-size:clamp(22px,3vw,34px);margin-bottom:.8vh;display:block}
+.num{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:800;background:linear-gradient(135deg,var(--ind),var(--teal));color:#06122b;margin-bottom:1vh}
+.chain{display:flex;align-items:center;gap:clamp(4px,1vw,12px);margin-top:4vh;flex-wrap:wrap}
+.node{flex:1;min-width:90px;text-align:center;padding:clamp(12px,2vw,24px) 6px;border-radius:16px;border:1px solid var(--line);background:var(--card);font-weight:700;font-size:clamp(12px,1.5vw,18px)}
+.arrow{color:var(--mut);font-size:22px}
+.on .node{animation:hit 1s forwards;animation-delay:calc(var(--k)*.55s + 1s)}
+@keyframes hit{to{background:color-mix(in srgb,var(--red) 25%,transparent);border-color:var(--red);box-shadow:0 0 28px color-mix(in srgb,var(--red) 55%,transparent)}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.4vh}
+.chip{padding:6px 12px;border-radius:99px;border:1px solid var(--line);font-size:clamp(11px,1.2vw,14px);background:var(--card)}
+.chip.a{border-color:var(--amb);border-style:dashed}
+.tag{display:inline-block;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:700;margin-bottom:8px}
+.t1{background:color-mix(in srgb,var(--ind) 30%,transparent)}.t2{background:color-mix(in srgb,var(--teal) 30%,transparent)}.t3{background:color-mix(in srgb,var(--amb) 30%,transparent)}.t4{background:color-mix(in srgb,var(--red) 30%,transparent)}
+.row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:clamp(12px,1.4vw,17px)}
+.row b{color:var(--teal)}
+.two{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(12px,2vw,28px);margin-top:3vh}
+ol{padding-left:20px;font-size:clamp(13px,1.5vw,18px);line-height:1.9}
+svg.net{position:absolute;right:-2vw;top:8vh;width:46vw;max-width:620px;opacity:.9;pointer-events:none}
+.ln{stroke:var(--ind);stroke-width:1.5;stroke-dasharray:6 8;animation:flow 2s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-28}}
+.nd{fill:var(--teal);animation:pulse 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pulse{50%{transform:scale(1.5);opacity:.6}}
+.brand{position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);left:5vw;right:5vw;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mut);z-index:6;pointer-events:none}.brand b{color:var(--ink);letter-spacing:.06em}.brand span::before{content:"|";margin-right:10px;opacity:.5}.brand em{margin-left:auto;font-style:normal;font-variant-numeric:tabular-nums}.ico{display:none}.g2{counter-reset:f}.g2 .card::before{counter-increment:f;content:"0" counter(f);display:block;font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--teal);margin-bottom:1vh}nav{position:fixed;left:0;right:0;bottom:0;padding:12px 5vw calc(12px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:5}
+nav button{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:99px;padding:8px 16px;cursor:pointer;font-size:14px;backdrop-filter:blur(8px)}
+nav button:hover{border-color:var(--ind)}
+.stat{font-size:clamp(28px,4.5vw,54px);font-weight:800;color:var(--teal);line-height:1;margin-bottom:6px}.g3{grid-template-columns:repeat(3,1fr)}.tc{text-align:center}.note{font-size:clamp(11px,1.2vw,14px);color:var(--mut);margin-top:2vh;border-left:3px solid var(--amb);padding-left:10px}.tw{overflow-x:auto}.tbl{width:100%;border-collapse:collapse;font-size:clamp(11px,1.3vw,16px)}.tbl th,.tbl td{padding:10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}.tbl th{color:var(--mut);font-size:11px;letter-spacing:.1em;text-transform:uppercase}.tbl .best td{background:color-mix(in srgb,var(--teal) 14%,transparent);font-weight:700}.bars div{height:8px;border-radius:8px;background:var(--line);margin:4px 0 10px;overflow:hidden}.bars i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ind),var(--teal));transition:width 1.3s .6s}.on .bars i{width:var(--w)}@media (max-width:760px){.g3{grid-template-columns:1fr}}.dots{display:flex;gap:8px}.dots i{width:9px;height:9px;border-radius:50%;background:var(--line);cursor:pointer;transition:.3s}.dots i.on{background:var(--teal);width:26px;border-radius:9px}
+.bar{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:3px;background:linear-gradient(90deg,var(--ind),var(--teal),var(--amb));z-index:11;transition:width .5s}
+@media (max-width:760px){.g4,.g5,.g2,.two{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}.arrow{display:none}svg.net{opacity:.35}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.r{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="bg"></div><div class="bar" id="bar"></div>
+<div class="brand"><b>AI_Loop</b><span>ChainTwin AI</span><em id="cnt">01 / 07</em></div>
+
+<section class="slide on" id="s1">
+<svg class="net" viewBox="0 0 400 300" aria-hidden="true">
+<g><line class="ln" x1="40" y1="60" x2="140" y2="130"/><line class="ln" x1="40" y1="200" x2="140" y2="130"/><line class="ln" x1="140" y1="130" x2="250" y2="80"/><line class="ln" x1="140" y1="130" x2="250" y2="190"/><line class="ln" x1="250" y1="80" x2="360" y2="130"/><line class="ln" x1="250" y1="190" x2="360" y2="130"/><line class="ln" x1="360" y1="130" x2="380" y2="250"/></g>
+<g><circle class="nd" cx="40" cy="60" r="8"/><circle class="nd" cx="40" cy="200" r="8" style="animation-delay:.4s"/><circle class="nd" cx="140" cy="130" r="10" style="animation-delay:.8s"/><circle class="nd" cx="250" cy="80" r="8" style="animation-delay:1.2s"/><circle class="nd" cx="250" cy="190" r="8" style="animation-delay:1.6s"/><circle class="nd" cx="360" cy="130" r="10" style="animation-delay:2s"/><circle class="nd" cx="380" cy="250" r="7" style="animation-delay:.2s"/></g>
+</svg>
+<div class="eyebrow r" style="--i:0">TCS Hackathon · Challenge 09 · AI for Business</div>
+<h1 class="r" style="--i:1">ChainTwin AI</h1>
+<p class="sub r" style="--i:2;margin-top:2vh">An autonomous digital twin that detects a supply disruption, traces the ripple across the network, and compares multiple recovery plans.</p>
+<div class="chips r" style="--i:3"><span class="chip">Digital Twin</span><span class="chip">Agentic AI</span><span class="chip">Optimization</span><span class="chip">Supply Chain</span></div>
+<p class="sub r" style="--i:4;margin-top:4vh;font-size:15px"><b style="color:var(--ink)">Presented by Team AI_Loop</b> · Press → or swipe to begin</p>
+</section>
+
+<section class="slide" id="s2">
+<div class="eyebrow r" style="--i:0">The problem</div>
+<h2 class="r" style="--i:1">One failure ripples everywhere</h2>
+<p class="sub r" style="--i:2">A supplier outage hits orders, stock, production, transport and customer promises at once. A local fix can simply move the disruption somewhere else.</p>
+<div class="chain r" style="--i:3">
+<div class="node" style="--k:0">Supplier</div><span class="arrow">›</span><div class="node" style="--k:1">Material</div><span class="arrow">›</span><div class="node" style="--k:2">Factory</div><span class="arrow">›</span><div class="node" style="--k:3">Distribution</div><span class="arrow">›</span><div class="node" style="--k:4">Store</div><span class="arrow">›</span><div class="node" style="--k:5">Customer</div>
+</div>
+<p class="sub r" style="--i:4;margin-top:3vh;color:var(--ind);font-weight:700">Our answer: understand the whole chain first, then propose and test the recovery.</p>
+</section>
+
+<section class="slide" id="d1">
+<div class="eyebrow r" style="--i:0">The digital twin</div>
+<h2 class="r" style="--i:1">A living model of the whole network</h2>
+<div class="grid g4">
+<div class="card tc r" style="--i:2"><div class="stat">14</div><p>data tables: suppliers, stock, orders, routes and more</p></div>
+<div class="card tc r" style="--i:3"><div class="stat">6</div><p>stages tracked for every order, supplier to customer</p></div>
+<div class="card tc r" style="--i:4"><div class="stat">4</div><p>disruption types: shutdown, capacity cut, route delay, factory outage</p></div>
+<div class="card tc r" style="--i:5"><div class="stat">24/7</div><p>real clock: statuses update as time passes</p></div>
+</div>
+<div class="chips r" style="--i:6;margin-top:3vh"><span class="chip">Suppliers</span><span class="chip">Materials</span><span class="chip">Bill of materials</span><span class="chip">Factories</span><span class="chip">Distribution centres</span><span class="chip">Stores</span><span class="chip">Customers and SLAs</span><span class="chip">Inbound POs</span><span class="chip">Routes and CO₂</span><span class="chip">Substitutes</span></div>
+<p class="note r" style="--i:7">Demo data is synthetic. The importer accepts any dataset in the same schema, so nothing is hardcoded.</p>
+</section>
+
+<section class="slide" id="s3">
+<div class="eyebrow r" style="--i:0">How it works</div>
+<h2 class="r" style="--i:1">Five agents, one decision</h2>
+<div class="grid g5">
+<div class="card r" style="--i:2"><div class="num">1</div><h3>Detect</h3><p>Manager reports the outage: supplier, start date, duration.</p></div>
+<div class="card r" style="--i:3"><div class="num">2</div><h3>Trace</h3><p>Follows materials, factories, stock, orders, customers and SLA impact.</p></div>
+<div class="card r" style="--i:4"><div class="num">3</div><h3>Plan</h3><p>Builds several different recovery plans plus a do-nothing baseline.</p></div>
+<div class="card r" style="--i:5"><div class="num">4</div><h3>Score</h3><p>Simulates each plan on the whole network and scores six measures.</p></div>
+<div class="card r" style="--i:6"><div class="num">5</div><h3>Approve</h3><p>Manager previews, then finalises. The AI never acts alone.</p></div>
+</div>
+<p class="sub r" style="--i:7;margin-top:3vh;font-size:clamp(13px,1.5vw,18px)">Every number comes from a tested calculation engine. The assistant only explains.</p>
+</section>
+
+<section class="slide" id="s4">
+<div class="eyebrow r" style="--i:0">Recovery plans</div>
+<h2 class="r" style="--i:1">Never one answer</h2>
+<div class="grid g4">
+<div class="card r" style="--i:2"><span class="tag t1">Level 1</span><h3>Internal</h3><p>Reallocate stock, reschedule production, prioritise customers, reroute transport.</p></div>
+<div class="card r" style="--i:3"><span class="tag t2">Level 2</span><h3>Backup supplier</h3><p>Backup suppliers and approved substitutes when losses exceed limits.</p></div>
+<div class="card r" style="--i:4"><span class="tag t3">Mixed</span><h3>Hybrid</h3><p>Combine internal and outside actions to balance cost and promises.</p></div>
+<div class="card r" style="--i:5"><span class="tag t4">Baseline</span><h3>Do nothing</h3><p>Shows the damage without action, so the benefit is measurable.</p></div>
+</div>
+<div class="r" style="--i:6;margin-top:3vh"><div class="eyebrow">Six scores per plan</div>
+<div class="chips"><span class="chip">Cost</span><span class="chip">SLA</span><span class="chip">Recovery time</span><span class="chip">Customer impact</span><span class="chip">Operational risk</span><span class="chip">Sustainability (CO₂)</span></div>
+<p class="sub" style="margin-top:1.4vh;font-size:clamp(12px,1.4vw,16px)">Weights are adjustable. Hard limits (capacity, stock, routes) are checked before any ranking.</p></div>
+</section>
+
+<section class="slide" id="d2">
+<div class="eyebrow r" style="--i:0">Demo scenario</div>
+<h2 class="r" style="--i:1">The hidden ripple a simple fix would miss</h2>
+<div class="grid g3">
+<div class="card r" style="--i:2"><span class="tag t4">Step 1</span><h3>Supplier A fails for 10 days</h3><p>Factory 1 holds 50 processors and needs 100 a day.</p><div class="stat" style="margin-top:8px">0.5 days</div><p>of cover left</p></div>
+<div class="card r" style="--i:3"><span class="tag t3">Step 2</span><h3>Naive fix: move 100 from Factory 2</h3><p>Factory 2 had 200 and needs 80 a day. After the move it has 100.</p><div class="stat" style="margin-top:8px;color:var(--red)">1.25 days</div><p>of cover: a second disruption</p></div>
+<div class="card r" style="--i:4"><span class="tag t2">Step 3</span><h3>ChainTwin catches it</h3><p>Moves only safe surplus, adds backup supply, reschedules and prioritises critical orders.</p><div class="stat" style="margin-top:8px">0 new gaps</div><p>checked across the network</p></div>
+</div>
+<p class="note r" style="--i:5">Illustrative synthetic data. Quantities and timing are verified by the simulation engine.</p>
+</section>
+
+<section class="slide" id="d3">
+<div class="eyebrow r" style="--i:0">Plan comparison</div>
+<h2 class="r" style="--i:1">Trade-offs made visible, not hidden</h2>
+<div class="card tw r" style="--i:2;margin-top:3vh"><table class="tbl"><tr><th>Plan</th><th>Cost</th><th>SLA</th><th>Recovery</th><th>Risk</th><th>CO₂</th></tr>
+<tr><td>Do nothing</td><td>Highest (penalties)</td><td>Lowest</td><td>Slowest</td><td>High</td><td>Lowest</td></tr>
+<tr><td>A · Internal only</td><td>Low</td><td>Medium</td><td>Medium</td><td>Medium</td><td>Low</td></tr>
+<tr><td>B · Backup supplier</td><td>Higher</td><td>High</td><td>Fast</td><td>Medium</td><td>Higher</td></tr>
+<tr class="best"><td>C · Hybrid (recommended)</td><td>Balanced</td><td>Highest</td><td>Fastest</td><td>Low</td><td>Balanced</td></tr></table></div>
+<div class="two r" style="--i:3"><div class="bars"><p class="sub" style="font-size:13px">Weighted score (example weights)</p><div><i style="--w:90%"></i></div><div><i style="--w:72%"></i></div><div><i style="--w:60%"></i></div></div><p class="note" style="margin-top:0">Qualitative view for illustration. The engine calculates real values for each plan, and managers can change the weights live.</p></div>
+</section>
+
+<section class="slide" id="s5">
+<div class="eyebrow r" style="--i:0">What makes it different</div>
+<h2 class="r" style="--i:1">Beyond a dashboard and a chatbot</h2>
+<div class="grid g2">
+<div class="card r" style="--i:2"><span class="ico">🌊</span><h3>Ripple Effect Detector</h3><p>Flags when a local fix, like moving stock, starves another factory, and penalises plans that shift the problem.</p></div>
+<div class="card r" style="--i:3"><span class="ico">🛡️</span><h3>Red-Team Stress Test</h3><p>Attacks the best plan with late deliveries, partial supply and longer outages to score its robustness.</p></div>
+<div class="card r" style="--i:4"><span class="ico">🔎</span><h3>Known vs Assumption</h3><p>Every fact is tagged <b>KNOWN</b> or <span class="chip a" style="padding:1px 8px">ASSUMPTION</span>. Edit an assumption and plans update instantly.</p></div>
+<div class="card r" style="--i:5"><span class="ico">⏱️</span><h3>What-If and time travel</h3><p>Simulate on a safe copy, then move the clock forward to watch orders and stock evolve.</p></div>
+</div>
+</section>
+
+<section class="slide" id="d4">
+<div class="eyebrow r" style="--i:0">Trust and guardrails</div>
+<h2 class="r" style="--i:1">Decisions a business can audit</h2>
+<div class="grid g3">
+<div class="card r" style="--i:2"><h3>Facts vs assumptions</h3><p>Everything on screen is tagged KNOWN or ASSUMPTION. Unconfirmed quotes and unapproved substitutes raise the plan’s risk score.</p></div>
+<div class="card r" style="--i:3"><h3>Human in the loop</h3><p>Proposed, then Previewed, then Finalised. Nothing changes in live data until the manager approves, and every approval is logged with Undo.</p></div>
+<div class="card r" style="--i:4"><h3>Hard constraints first</h3><p>Supplier capacity, factory limits, non-negative stock and route availability are checked before any plan is ranked.</p></div>
+</div>
+<div class="chips r" style="--i:5;margin-top:3vh"><span class="chip">No invented suppliers</span><span class="chip">AI never creates a disruption</span><span class="chip a">Editable assumptions</span><span class="chip">Stale-plan warning</span><span class="chip">Audit trail</span></div>
+</section>
+
+<section class="slide" id="s6">
+<div class="eyebrow r" style="--i:0">Architecture</div>
+<h2 class="r" style="--i:1">Runs in the browser. No API keys.</h2>
+<div class="two">
+<div>
+<div class="card r" style="--i:2;margin-bottom:12px"><h3>Interface</h3><p>React (JavaScript), Tailwind, React Flow network graph, Recharts</p></div>
+<div class="card r" style="--i:3;margin-bottom:12px"><h3>Calculation engine</h3><p>Pure JavaScript: impact, optimizer, six scores, tested with Vitest</p></div>
+<div class="card r" style="--i:4;margin-bottom:12px"><h3>Optimizer</h3><p>Runs in a Web Worker so the screen never freezes</p></div>
+<div class="card r" style="--i:5"><h3>Data and knowledge</h3><p>Dexie (IndexedDB) live queries, Excel/CSV importer, local document search</p></div>
+</div>
+<div class="card r" style="--i:6"><h3>Real-time, real-date</h3>
+<div class="row"><span>Clock</span><b>Device’s real time</b></div><div class="row"><span>Updates</span><b>Live across tabs</b></div><div class="row"><span>Statuses</span><b>Change as time passes</b></div><div class="row"><span>File dates</span><b>Shift to today</b></div><div class="row"><span>AI key</span><b>Optional, off</b></div></div>
+</div>
+</section>
+
+<section class="slide" id="d5">
+<div class="eyebrow r" style="--i:0">Roadmap</div>
+<h2 class="r" style="--i:1">From hackathon prototype to enterprise product</h2>
+<div class="grid g3">
+<div class="card r" style="--i:2"><span class="tag t2">Today</span><h3>Working prototype</h3><p>Browser-based twin, impact engine, multi-plan optimizer, what-if simulator and knowledge search.</p></div>
+<div class="card r" style="--i:3"><span class="tag t1">Next</span><h3>Connect real systems</h3><p>ERP and warehouse connectors, shared database for teams, secure sign-in and roles.</p></div>
+<div class="card r" style="--i:4"><span class="tag t3">Later</span><h3>Smarter and wider</h3><p>Live supplier risk signals, demand forecasting, multi-tier suppliers and automated approvals within limits.</p></div>
+</div>
+</section>
+
+<section class="slide" id="s7">
+<div class="eyebrow r" style="--i:0">Impact and demo</div>
+<h2 class="r" style="--i:1">Built for the six judging measures</h2>
+<div class="two">
+<div class="card r" style="--i:2">
+<div class="row"><span>Disruption detection</span><b>Confirmed event + early signals</b></div>
+<div class="row"><span>Dependency reasoning</span><b>Supplier → customer path</b></div>
+<div class="row"><span>Plan diversity</span><b>Internal, backup, hybrid</b></div>
+<div class="row"><span>Optimization quality</span><b>Whole-network simulation</b></div>
+<div class="row"><span>Adaptability</span><b>What-if, editable assumptions</b></div>
+<div class="row" style="border:0"><span>Business impact</span><b>Loss avoided vs do nothing</b></div>
+</div>
+<div class="card r" style="--i:3"><h3>5-minute demo</h3>
+<ol><li>Show the live network</li><li>Report the supplier outage</li><li>See safe vs at-risk orders</li><li>Compare plans, stress test</li><li>Preview, then finalise</li></ol></div>
+</div>
+<p class="sub r" style="--i:4;margin-top:3vh;font-size:14px">Demo uses a synthetic dataset. Plan numbers are calculated by the engine, not typed in. Thank you · Team AI_Loop</p>
+</section>
+
+<nav><button id="prev" aria-label="Previous slide">← Prev</button><div class="dots" id="dots"></div><div style="display:flex;gap:8px"><button id="theme" aria-label="Toggle theme">◐</button><button id="next" aria-label="Next slide">Next →</button></div></nav>
+
+<script>
+(function(){
+var S=[].slice.call(document.querySelectorAll(".slide")),n=0,dots=document.getElementById("dots"),bar=document.getElementById("bar");
+S.forEach(function(_,i){var d=document.createElement("i");d.onclick=function(){go(i)};dots.appendChild(d)});
+function go(i){
+  n=Math.max(0,Math.min(S.length-1,i));
+  S.forEach(function(s,k){s.classList.toggle("on",k===n);s.classList.toggle("past",k<n)});
+  [].forEach.call(dots.children,function(d,k){d.classList.toggle("on",k===n)});
+  bar.style.width=((n+1)/S.length*100)+"%";
+  document.getElementById("cnt").textContent=String(n+1).padStart(2,"0")+" / "+String(S.length).padStart(2,"0");
+  try{history.replaceState(null,"","#s"+(n+1))}catch(e){}
+}
+document.getElementById("next").onclick=function(){go(n+1)};
+document.getElementById("prev").onclick=function(){go(n-1)};
+document.getElementById("theme").onclick=function(){
+  var r=document.documentElement,light=r.getAttribute("data-theme")?r.getAttribute("data-theme")==="light":matchMedia("(prefers-color-scheme: light)").matches;
+  r.setAttribute("data-theme",light?"dark":"light");
+};
+document.addEventListener("keydown",function(e){
+  if(e.key==="ArrowRight"||e.key==="PageDown"||e.key===" ")go(n+1);
+  if(e.key==="ArrowLeft"||e.key==="PageUp")go(n-1);
+  if(e.key==="Home")go(0);if(e.key==="End")go(S.length-1);
+});
+var x0=null;document.addEventListener("touchstart",function(e){x0=e.touches[0].clientX},{passive:true});
+document.addEventListener("touchend",function(e){if(x0===null)return;var d=e.changedTouches[0].clientX-x0;if(Math.abs(d)>60)go(n+(d<0?1:-1));x0=null});
+var m=/^#s(\d+)$/.exec(location.hash);go(m?parseInt(m[1],10)-1:0);
+})();
+</script>
+</body>
+</html>
